@@ -1,27 +1,29 @@
 package com.willredington.learning.classes;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
+  /*
+  * Scenario 1: create a program that processes incoming requests
+  *
+  *
+  * There are currently three request types: JSON, Plain text, and base64
+  *
+  * There should be handlers that can only process a specific request type (JSON, Plain text.etc)
+  *
+  * Each handle should check to see if it can process the request, and then log the payload in readable text
+  *
+  */
   public static void main(String[] args) {
 
-    Person will = new Person("wil", 27);
-    Person ethan = new Person("ethan", 31);
-    Person michael = new Person("michael", 30);
-    Person jon = new Person("jon", 28);
-    Person stephano = new Person("stephano", 27);
+    Request jsonRequest = new Request(RequestType.JSON, "{\"name\":\"john\",\"age\":22,\"class\":\"mca\"}");
+    Request plainRequest = new Request(RequestType.PLAIN_TEXT, "hello world");
+    Request base64Request = new Request(RequestType.BASE_64, "aGVsbG8gd29ybGQ=");
 
-    List<Person> people = new ArrayList<Person>();
-    people.add(will);
-    people.add(ethan);
+    List<Request> requests = Arrays.asList(jsonRequest, plainRequest, base64Request);
 
-    PersonPrinter printer = new PersonPrinter();
-
-    for (int i = 0; i < people.size(); i++) {
-      Person person = people.get(i);
-      printer.print(person);
-    }
+    // TODO: process requests
   }
 }
